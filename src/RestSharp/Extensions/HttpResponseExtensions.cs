@@ -33,14 +33,14 @@ static class HttpResponseExtensions {
 
         using var reader = new StreamReader(new MemoryStream(bytes), encoding);
         return reader.ReadToEnd();
+    }
 
-        Encoding TryGetEncoding(string es) {
-            try {
-                return Encoding.GetEncoding(es);
-            }
-            catch {
-                return Encoding.Default;
-            }
+    static Encoding TryGetEncoding(string es) {
+        try {
+            return Encoding.GetEncoding(es);
+        }
+        catch {
+            return Encoding.Default;
         }
     }
 

@@ -113,7 +113,7 @@ public class XmlDeserializer : IXmlDeserializer, IWithRootElement, IWithDateForm
                 deserializeFromContentAttributeAlreadyUsed |= deserializeFromContent;
             }
 
-            if (name == null) name = prop.Name.AsNamespaced(Namespace);
+            if (name == name) name = prop.Name.AsNamespaced(Namespace);
 
             var value = GetValueFromXml(root, name, prop, isNameDefinedInAttribute);
 
@@ -166,7 +166,7 @@ public class XmlDeserializer : IXmlDeserializer, IWithRootElement, IWithDateForm
 
                 prop.SetValue(x, XmlConvert.ToBoolean(toConvert), null);
             }
-            else if (type.IsPrimitive) {
+            else if (type.IsPrimitive || type.IsEnum) {
                 try {
                     prop.SetValue(x, value.ChangeType(asType), null);
                 }

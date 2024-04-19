@@ -23,7 +23,7 @@ public abstract class ParametersCollection : IReadOnlyCollection<Parameter> {
     // public ParametersCollection(IEnumerable<Parameter> parameters) => _parameters.AddRange(parameters);
 
     static readonly Func<Parameter, string?, bool> SearchPredicate = (p, name)
-        => p.Name != null && p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase);
+        => p.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase);
 
     public bool Exists(Parameter parameter) => Parameters.Any(p => SearchPredicate(p, parameter.Name) && p.Type == parameter.Type);
 

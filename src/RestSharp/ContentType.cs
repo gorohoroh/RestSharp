@@ -83,6 +83,4 @@ public class ContentType : IEquatable<ContentType> {
 
         return Equals((ContentType)obj);
     }
-
-    public override int GetHashCode() => _value.GetHashCode();
 }
